@@ -1,0 +1,111 @@
+﻿@model IEnumerable<Profesor>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Lista de Profesores</h2>
+        </div>
+        <div class="col-6 text-end">
+            <a class="btn btn-primary" asp-controller="Profesor" asp-action="Create">
+                <i class="bi bi-plus-circle"></i> &nbsp; Agregar Profesor
+            </a>
+        </div>
+    </div>
+</div>
+<br />
+
+<table class="table table-bordered table-striped" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                Codigo
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Apellido
+            </th>
+            <th>
+                Precio Hora
+            </th>
+            <th>
+                Horas Trabajadas
+            </th>
+            <th>
+                Monto Ganado
+            </th>
+            <th>
+                Incentivos
+            </th>
+            <th>
+                Total Ganado
+            </th>
+            <th>
+                ISR
+            </th>
+            <th>
+                Avances
+            </th>
+            <th>
+                Total Deducciones
+            </th>
+            <th>
+                Total a Recibir
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var obj in Model)
+        {
+            <tr>
+                <td>
+                    @obj.Id
+                </td>
+                <td>
+                    @obj.Nombre
+                </td>
+                <td>
+                    @obj.Apellido
+                </td>
+                <td>
+                    @obj.PrecioHora
+                </td>
+                <td>
+                    @obj.CantidadHoras
+                </td>
+                <td>
+                    @obj.MontoGanado
+                </td>
+                <td>
+                    @obj.Incentivos
+                </td>
+                <td>
+                    @obj.TotalGanado
+                </td>
+                <td>
+                    @obj.ISR
+                </td>
+                <td>
+                    @obj.Avances
+                </td>
+                <td>
+                    @obj.TotalDeducciones
+                </td>
+                <td>
+                    @obj.TotalRecibir
+                </td>
+                <td>
+                    <div class="w-50 btn-group" role="group">
+                        <a class="btn btn-secondary mx-1" asp-controller="Profesor" asp-action="Edit" asp-route-id="@obj.Id"><i class="bi bi-pencil-square"></i> Edit</a>
+                        <a class="btn btn-danger mx-1" asp-controller="Profesor" asp-action="Delete" asp-route-id="@obj.Id"><i class="bi bi-trash-fill"></i> Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
